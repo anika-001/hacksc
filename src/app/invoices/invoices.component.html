@@ -1,0 +1,147 @@
+<div class="main">
+  <div class="start">
+    <!-- 
+      hello -->
+
+    <div class="tools">
+      <div class="icon" *ngFor="let x of tools; let i = index">
+        <span tooltip="{{x.tooltip}}" placement="right">
+          <button (click)='callfunc(i)' class="icon">
+            <img src="{{x.icon}}" alt="{{x.alttext}}" height="25px">
+          </button>
+          <!-- <div routerLink="{{x.link}}">
+            <img alt="{{x.alttext}}" src="{{x.icon}}" height="25px">
+          </div> -->
+        </span>
+      </div>
+      <div *ngIf="invpopup" class="add">
+        <div class="close" (click)="invpopup = false">
+          <img src="../../assets/images/add.png" height="25px">
+        </div>
+        <div class="forform">
+          <div class="formcont">
+            <div class="formtitle">
+              Upload your Invoice
+            </div>
+            <form [formGroup]="forminvoices" class="form">
+              Name of the Company: <input class="input" placeholder="Company Name" formControlName="name">
+
+              Date: <input class="input" placeholder="Date" type="date" formControlName="date">
+              Upload invoice: <input type="file" id="file" (change)="uploadinvoice($event)" class="input">
+              <div class="submitbut" (click)="submit()">
+                Submit
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="reqpopup" class="add">
+        <div class="close" (click)="reqpopup = false">
+          <img src="../../assets/images/add.png" height="25px">
+        </div>
+        <div class="inputs">
+          <app-form [questions]="Requests" [value]="3" [name]="'Request a payment'"></app-form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="invoices">
+    <!-- <div class="information"> -->
+    <div class="invoiceTable">
+      <div *ngIf="Dasboard" class="Dasboard">
+        <div class="heading">
+          <div class="heading1">
+            Company Name
+          </div>
+          <div class="heading2">
+            Dates
+          </div>
+          <div class="heading3">
+            Link
+          </div>
+        </div>
+        <div class="content">
+          <div class="heading" *ngFor="let y of Inv" style="background-color: var(--blgr);">
+            <div class="heading1">
+              {{y.payload.doc.data().Company_name}}
+            </div>
+            <div class="heading2">
+              {{y.payload.doc.data().Date}}
+            </div>
+            <div class="heading3">
+              <a href={{y.payload.doc.data().Link}} target="blank">Invoice</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="Requested" class="Requested">
+        <div class="heading">
+          <div class="heading1" style="flex-basis:20%">
+            Name
+          </div>
+          <div class="heading2" style="flex-basis:20%">
+            Email-id
+          </div>
+          <div class="heading3" style="flex-basis: 10%">
+            Amount
+          </div>
+          <div class="heading3">
+            Description
+          </div>
+        </div>
+        <div class="content">
+          <div *ngFor="let y of pay" style="background-color: var(--blgr);">
+            <div *ngIf="y.amount != y.amount_paid" class="heading">
+              <div class="heading1" style="flex-basis:20%">
+                {{y.customer.name}}
+              </div>
+              <div class="heading2" style="flex-basis:20%">
+                {{y.customer.email}}
+              </div>
+              <div class="heading3" style="flex-basis:10%">
+                {{y.amount}}
+              </div>
+              <div class="heading3">
+                {{y.description}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="Payments" class="Payments">
+        <div class="heading">
+          <div class="heading1" style="flex-basis:20%">
+            Name
+          </div>
+          <div class="heading2" style="flex-basis:20%">
+            Email-id
+          </div>
+          <div class="heading3" style="flex-basis: 10%">
+            Amount
+          </div>
+          <div class="heading3">
+            Description
+          </div>
+        </div>
+        <div class="content">
+          <div *ngFor="let y of pay" style="background-color: var(--blgr);">
+            <div *ngIf="y.amount == y.amount_paid" class="heading">
+              <div class="heading1" style="flex-basis:20%">
+                {{y.customer.name}}
+              </div>
+              <div class="heading2" style="flex-basis:20%">
+                {{y.customer.email}}
+              </div>
+              <div class="heading3" style="flex-basis:10%">
+                {{y.amount}}
+              </div>
+              <div class="heading3">
+                {{y.description}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

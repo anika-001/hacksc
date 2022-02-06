@@ -1,0 +1,18 @@
+<div class="main">
+    <div class = "logo" routerLink = "/home">
+        <!-- <img src = "https://firebasestorage.googleapis.com/v0/b/fundle-f51a5.appspot.com/o/assets%2FLogo.png?alt=media&token=9b38865b-f115-4482-b7d1-ad30234b0365" style = "height: 10vh; width: 20vh;"> -->
+    </div>
+    <div class="options">
+        <div class="nav-bar-item" routerLink={{y.link}} *ngFor="let y of navdata">
+            <div class="nav-bar-item-text">{{y.name}}</div>
+        </div>
+    </div>
+
+    <div class = "welcome">
+        Welcome {{user}}!
+    </div>
+
+    <div class = "logout" (click) = "logout()">
+        Logout
+    </div>
+</div>

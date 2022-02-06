@@ -1,0 +1,86 @@
+<div class="main">
+    <!-- <div class = "homeimage"></div> -->
+    <div class="module" style="display: flex;">
+        <div class="title">
+            Your Workspace
+        </div>
+
+        <div class="modulebody" style="display: flex;">
+            <div style="font-size: 150%; padding-top: 1%; background-color: rgb(230, 228, 228); height: fit-content;">
+                {{metadata.payload.data().project_name}}</div>
+            <div class="projectbody" style="display: flex;">
+                <div class="projectbrief"
+                    style="font-size: x-large; display: flex; ">
+                    Brief
+                    <p style="padding-top: 2%;padding-left: 2%; font-size: 16px;">
+                        {{metadata.payload.data().brief}}
+                    </p>
+                </div>
+                <div class="projectboards"
+                    [formGroup]="form">
+                    <button (click) = "newboard()" class = "b1" style="margin-bottom: 5px;">Add a board +</button>
+                    <div *ngIf="popup" class="add">
+                        <div class="close" (click)="popup = false">
+                            <img src="../../assets/images/add.png" height="25px">
+                        </div>
+                        <div class="inputs">
+                            <app-form [questions]="boards" [value]="2" [name] = "'Add a Board'" [docid] = "wId"></app-form>
+                        </div>
+                    </div>
+                    <div formArrayName="boards" class = "projboards">
+                        <div *ngFor="let board of getboards(); let i = index">
+                            <form class="board1" [formGroupName]="i"
+                                style="font-size: x-large; background-color: rgba(255, 255, 255, 0.5); display: flex;justify-content:center;">
+                                {{allboards[i].payload.doc.data().board_name}}
+                                <div class="buttons">
+                                    <input placeholder="Add a note" formControlName="content">
+                                    <div class="b1" style="align-self: flex-end;" (click) = "addanote(allboards[i].payload.doc.id, i)">+</div>
+                                </div>
+                                <div *ngFor = "let note of notes[i]" style="font-size: 70%; text-align: left; width: 100%; padding-left: 5px; padding-bottom: 2px;">
+                                    &#x2713; {{note.payload.doc.data().content}}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- <div class="board1"
+                        style="font-size: x-large; background-color: #ffbdb2;width: 23%;height:60%; display: flex;justify-content:center;">
+                        To do
+                        <div class="buttons" style="display: flex; background-color: #ffbdb2;">
+                            <div class="b1" style="display: flex; background-color: #f7a394;width: fit-content;">+</div>
+                        </div>
+                    </div>
+
+                    <div class="board2"
+                        style="font-size: x-large; background-color: #ffbdb2;width: 23%;height:60%;display: flex;justify-content:center;">
+                        Ideas
+                        <div class="buttons" style="display: flex; background-color: #ffbdb2;">
+                            <div class="b2" style="display: flex; background-color: #f7a394; width: fit-content;">+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="board3"
+                        style="font-size: x-large; background-color: #ffbdb2;width: 23%;height:60%;display: flex;justify-content:center;">
+                        Reminders
+                        <div class="buttons" style="display: flex; background-color: #ffbdb2;">
+                            <div class="b3" style="display: flex; background-color: #f7a394; width: fit-content;">+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="board4"
+                        style="font-size: x-large; background-color: #ffbdb2;width: 23%;height:60%;display: flex;justify-content:center;">
+                        Random
+                        <div class="buttons" style="display: flex; background-color: #ffbdb2;">
+                            <div class="b4" style="display: flex; background-color: #f7a394; width: fit-content;">+
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- <div class="modulebody2" style="display: flex;">
+            <div style="font-size: 150%;padding-top: 1%;">Past Activity</div>
+        </div> -->
+
+    </div>
+
+</div>

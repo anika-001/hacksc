@@ -1,0 +1,284 @@
+.title{
+    height: 10vh;
+     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.main{
+    background: rgba( 74, 144, 226, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+ol {
+    list-style: none;
+    counter-reset: days-counter;
+    font-size: 2rem;
+    position: relative;
+    
+}
+.even-1{
+    margin-left: 50vh;
+}
+
+ol li {
+    counter-increment: days-counter;
+    //height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-shadow: 0 1px 5px hsla(0, 0%, 0%, 0.8);
+    /* position relative to absolute position the pseudo element behind the text */
+    z-index: 5;
+
+}
+/* display the custom counter with the :before pseudo element, in the very center of the list item */
+ol li:before {
+    content: counter(days-counter);
+    z-index: -5;
+    position: absolute;
+    opacity: 0.5;
+    font-size: 15vh;
+    font-family: "Major Mono Display", monospace;
+    transform: translate(-50%, 0%);
+}
+/* added bonus, a more christmas-y selection */
+ol li::selection {
+    color: hsl(0, 0%, 100%);
+    background: hsl(130, 50%, 35%);
+    
+}
+/* position the custom counter to the left/right for odd/even list items */
+ol li:nth-child(odd):before {
+    left: 0%;
+    
+}
+ol li:nth-child(even):before {
+    left: 200%;
+}
+
+/* add position sticky and position each subsequent list item 7.5vh from the previous */
+ol li {
+    position: sticky;
+}
+@for $counter from 1 through 12 {
+    ol li:nth-child(#{$counter}) {
+        top: #{($counter - 1) * 7.5vh};
+        height: #{100vh - ($counter - 1) * 7.5vh};
+        
+    }
+}
+$numbers:("1","2","3");
+.main
+{
+    margin-top: 6vh;
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/fundle-f51a5.appspot.com/o/assets%2F30ff07936ec8c506f7dd18a7d5d03814.jpg?alt=media&token=14fe350e-3f6b-4747-ae1b-3947861420a7');
+    height:100%;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.start
+{
+    // height:100%;
+    max-width: 100vw;
+    // background-color: bisque;
+}
+
+.tools
+{
+    top:20vh;
+    left:0vw;
+    height:60vh;
+    width: 5vw;
+    // position: absolute;
+    position: fixed;
+    background-color: #fee0dc;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 15px;;
+}
+
+.icon
+{
+    height:4vh;
+    width: 2vw;
+    border-radius: 50%;
+    border: 1px solid transparentize(white, 0.5);
+    text-shadow: 0 0 1em transparentize(black, 0.5);
+    background: transparentize(white, 0.8);
+    backdrop-filter: blur(20px);
+    cursor: pointer;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    // background-image: url('../../assets/images/trending.png');
+}
+.information
+{
+    background-color: #fff;
+    border: solid black;
+    width: 80vw;
+    margin:10vh;
+    border-radius: 15px;;
+}
+button{
+    
+    border-radius: 50%;
+    border: 1px solid transparentize(white, 0.5);
+    text-shadow: 0 0 1em transparentize(black, 0.5);
+    background: transparentize(white, 0.8);
+    backdrop-filter: blur(20px);
+    cursor: pointer;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+.add
+{
+  // height:100%;
+  // width: 100%;
+  background-color: var(--peach);
+  // color: #fff;
+  position:absolute;
+  top:15vh;
+  left:25vw;
+}
+.close
+{
+  transform: rotate(45deg);
+  height:25px;
+  width:25px;
+  cursor: pointer;
+}
+.inputs
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+///
+.cards {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+    font-family: "Righteous", cursive;
+    min-height: 100vh;
+    flex-direction: row;
+    flex-wrap: wrap;
+    // justify-content: space-evenly;
+    // background-color: #ffac5e;
+    margin: 20vh 10vh 10vh 10vh;
+    background-color: #a9c9ff;
+    // background-image: linear-gradient(180deg, #a9c9ff 0%, #ffbbec 100%);
+  
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      // background-color: #61847a;
+      height: 100%;
+      padding: 0;
+      // padding: 40px 0;
+     
+  
+      .card {
+        position: relative;
+        width: 15vw;
+        height: 20vh;
+        margin: 20px 20px;
+        background: #b2ced6;
+        border-radius: 15px;
+        box-shadow: 0 15px 60px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+  
+        .face {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+  
+          &.face1 {
+            box-sizing: border-box;
+            padding: 20px;
+  
+            h2 {
+              margin: 0;
+              padding: 0;
+            }
+  
+            .Projname {
+              background-color: #000;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+  
+            .Info {
+              background-color: #61847a;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+  
+          }
+  
+          &.face2 {
+            transition: 0.5s;
+            border: 1px solid transparentize(white, 0.5);
+            text-shadow: 0 0 1em transparentize(black, 0.5);
+            background: transparentize(white, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+  
+            h2 {
+              margin: 20px;
+              padding: 10px;
+              text-align: center;
+              font-size: 40px;
+              font-family: 'Courier New', Courier, monospace;
+              color: white;
+            //   background-color: black;
+              transition: 0.5s;
+              text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+              z-index: 10;
+            }
+      
+          }
+        }
+      }
+  
+      .card:hover .face.face2 {
+        height: 60px;
+        background: #ffac5e;
+  
+        h2 {
+          font-size: 2em;
+          color: black;
+        }
+      }
+      // @each $num in $numbers{
+      //   .card:nth-child(#{$num}) .face.face2 {
+      //       border-radius: 15px;
+      //       // background-image: url('../../assets/images/trending.png');
+
+      // }
+    }
+}

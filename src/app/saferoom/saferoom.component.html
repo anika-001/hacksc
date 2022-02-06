@@ -1,0 +1,89 @@
+<div class="main">
+    <audio autoplay loop src="./../../assets/Audios/saferoombg.mp3"></audio>
+    <div class="start">
+        <div class="information">
+            <div *ngIf="rooms" class="rooms">
+                <div class="boxes">
+                    <div class="box" *ngFor="let z of safedata" routerLink={{z.link}}>{{z.name}}</div>
+                    <!-- <div class ="container" *ngFor="let x of safedata" data-tilt data-tilt-scale="0.95" data-tilt-startY="40">{{x.name}}</div> -->
+                </div>
+            </div>
+            <div *ngIf="forum" class="forum">
+                <!-- <div class="main">
+                    <div class="header"></div> -->
+                    <div class="maincontent">
+                        <div class="filter">
+                            <div class="yourcomment">
+                                <form [formGroup]="threadform" style="width: 100%;"><input class="ip"
+                                        placeholder="Add a Thread" type="text" style="width: 100%;"
+                                        formControlName="newth"></form>
+                                <div
+                                    style="align-self: flex-start; margin-right: 10%; font-size: 50%; display:flex; width: 20vw; margin-left: 5px;">
+                                    <button class="custbutton" style="padding: 0% 0%;"
+                                        (click)="addthread()">Add</button>
+                                    <button class="custbutton" style="margin-left: 10px;" (click)="addthreadAnon()">Add
+                                        Anonymously</button>
+                                </div>
+                            </div>
+                            <div style="font-size: 130%; text-align: center; width: 100%;">Threads: </div>
+                            <div *ngFor="let x of allthreads" (click)="showthread(x)"
+                                style="margin: 5% 2%; cursor: pointer; text-decoration: underline;">
+                                {{x.payload.doc.data().topic}}
+                            </div>
+                        </div>
+                        <div class="thread" *ngIf="thread != ''">
+                            <div class="threadtitle">
+                                {{thread.payload.doc.data().topic}}
+                                <div style="font-family: country; font-size: 50%;">~By
+                                    {{thread.payload.doc.data().madeby}}</div>
+
+                            </div>
+                            <div class="yourcomment">
+                                <form [formGroup]="replyform" style="width: 100%;"><input class="ip" placeholder="reply"
+                                        type="text" style="width: 80%;" formControlName="replyin"></form>
+                                <div style="align-self: flex-end; margin-right: 10%; display:flex; font-size: 70%;">
+                                    <button class="custbutton" (click)="reply()">Reply</button>
+                                    <button class="custbutton" style="margin-left: 10px;" (click)="replyAnon()">Reply
+                                        Anonymously</button>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div class="comment" *ngFor="let x of comments">
+                                    <div class="name">
+                                        {{x.payload.doc.data().name}} says..
+                                    </div>
+                                    <div class="comcontent">
+                                        {{x.payload.doc.data().comment}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="thread" *ngIf="thread == ''">
+                            <div style="font-size: 400%; text-align: center; font-family: country;">Please select a
+                                thread or a new one</div>
+                        </div>
+                    </div>
+                <!-- </div>
+            </div> -->
+            <div *ngIf="mood" class="moodtracker">
+                <p>This is moodtracker</p>
+            </div>
+            <!-- <div *ngIf="diary"class="diary">
+                <p>This is diary</p>
+            </div> -->
+        </div>
+        <div class="tools">
+            <div class="icon" *ngFor="let x of tools; let i = index">
+                <span tooltip="{{x.tooltip}}" placement="right">
+                    <!-- <a href="{{x.link}}">
+                        <img alt="{{x.alttext}}" src="{{x.icon}}" height="25px">
+                    </a> -->
+                    <button class="toolbutton"(click)='callfunc(i)'>
+                        <img alt="{{x.alttext}}" src="{{x.icon}}" height="25px">
+                    </button>
+                </span>
+            </div>
+
+        </div>
+    </div>
+</div>

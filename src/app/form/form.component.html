@@ -1,0 +1,23 @@
+<div class="main">
+    <div class="formcont">
+        <div class="formtitle">
+            {{name}}
+        </div>
+        <!-- <form [formGroup]="addtrig" class = "form" >
+            <input type = "number" placeholder="Enter Trigger Amount" class = "input" formControlName = "Amount">
+            <div class = "submitbut" (click) = "submittrigger()">
+                Submit
+            </div>
+        </form> -->
+        <form (ngSubmit)="onSubmit()" [formGroup]="form" class = "form">
+
+            <!-- <div *ngFor="let question of questions" class="form-row"> -->
+                <app-form-template *ngFor="let question of questions" [question]="question" [form]="form"></app-form-template>
+            <!-- </div> -->
+
+            <div class="form-row">
+                <button type="submit" class = "submitbut" [disabled]="!form.valid">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

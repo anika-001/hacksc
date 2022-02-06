@@ -1,0 +1,84 @@
+.main{
+    width: 100%;
+    height: 6vh;
+    position: fixed;
+    top: 0;
+    display: flex;
+    z-index: 100;
+    overflow: hidden;
+    background-color: white;
+    // color: white;
+}
+
+.logo{
+    flex-basis: 10%;
+    cursor: pointer;
+    // background-color: aqua;
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/fundle-f51a5.appspot.com/o/assets%2FLogo.png?alt=media&token=ad3e66bf-fe0d-4542-85fe-4dc2fa92fcf3");
+    background-size: 100% 100%;
+}
+
+.welcome{
+    flex-basis: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+    text-align: center;
+}
+
+.logout{
+    flex-basis: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.logout:hover{
+    color: black;
+    background-color: white;
+}
+.options{
+    flex-basis: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 150%;
+    align-items: center;
+    height: 100%;
+}
+
+.main2{
+    background-color: white;
+}
+
+.nav-bar-item{
+    display: flex;
+    position: relative;
+    margin: 1vh 0;
+    padding: 0 0.5vw;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nav-bar-item:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-bar-item:hover:before {
+    visibility: visible;
+    width: 100%;
+  }

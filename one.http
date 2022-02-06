@@ -1,0 +1,1 @@
+curl --request GET 'https://api.twitter.com/2/users/1337443828500819968/mentions?tweet.fields=context_annotations' --header 'Authorization: Bearer XXXXXX'

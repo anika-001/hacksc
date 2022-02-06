@@ -1,0 +1,71 @@
+<div class="main">
+    <div class="start">
+        <div class="information">
+            <div class="title">
+                Your Workspaces
+            </div>
+            <div class="cards">
+                <div class="container" *ngFor="let y of projects" style="border-radius: 15px" (click) = "toWorkspace(y.payload.doc.id)">
+                    <!-- *ngFor="let y of cards"> -->
+
+                    <div class="card">
+                        <div class="face face1">
+                            <div class="content">
+                                <!-- <span class="stars"></span> -->
+                                <!-- <h2 class="Projname">{{y.payload.doc.data().project_name}}</h2> -->
+                                <p class="Info">{{y.payload.doc.data().brief}}</p>
+                            </div>
+                        </div>
+                        <div class="face face2">
+                            <h2>{{y.payload.doc.data().project_name}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tools">
+                <div class="icon" *ngFor="let x of tools">
+                    <span tooltip="{{x.tooltip}}" placement="right">
+                        <div routerLink="{{x.link}}">
+                            <img alt="{{x.alttext}}" src="{{x.icon}}" height="25px">
+                        </div>
+                    </span>
+                </div>
+                <div>
+                    <span tooltip="Add Projects" placement="right">
+                        <button class="toolbutton"(click)='addprojs()' height="4vh" width="2vw">
+                            <img src="../../assets/images/add.png" height="25px">
+                        </button>
+                        <div *ngIf="projpopup" class="add">
+                            <div class="close" (click)="projpopup = false">
+                                <img src="../../assets/images/add.png" height="25px">
+                            </div>
+                            <div class="inputs">
+                                <app-form [questions]="Projects" [value]="1" [name] = "'Add Projects'"></app-form>
+                            </div>
+                            <!-- <button class="toolbutton"(click)='Submit()' height="6vh" width="15vw">Submit</button> -->
+                        </div>
+                    </span>
+                </div>
+                <div>
+                    <span tooltip="Add Collaboration" placement="right">
+                        <button class="toolbutton"(click)='addcollabs()'>
+                            <img src="../../assets/images/Collaboration.png" height="25px">
+                        </button>
+                        <div *ngIf="collabpopup" class="add">
+                            <div class="close" (click)="collabpopup = false">
+                                <img src="../../assets/images/add.png" height="25px">
+                            </div>
+                            <div class="inputs">
+                                <app-form [questions]="Collaboration" [value]="1" [name] = "'Add Projects'"></app-form>
+                                <!-- <form [formGroup]="form">
+                                    <input placeholder="Enter your project name" formControlName="Projectname">
+                                    <input placeholder="Enter your project information" formControlName="Info">
+                                </form> -->
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
